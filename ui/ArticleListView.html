@@ -1,0 +1,14 @@
+<repeat group="{{ @articleParts }}" value="{{ @articlePart }}">
+    <h3>{{ @articlePart.title }}</h3>
+    <p>{{ @articlePart.perex }}</p>
+    {{ UTF::instance()->translate( @articlePart.content ) }}
+    <check if="@articlePart.image1==1">
+        <true><img src="/pictures/sub/150x150_{{ @articlePart.id }}_1.jpg"></true>
+    </check>
+    <check if="@articlePart.image2==1">
+        <true><img src="/pictures/sub/150x150_{{ @articlePart.id }}_2.jpg"></true>
+    </check>
+    <check if="@articlePart.image3==1">
+        <true><img src="/pictures/sub/150x150_{{ @articlePart.id }}_3.jpg"></true>
+    </check>
+</repeat>

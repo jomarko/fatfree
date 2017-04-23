@@ -82,7 +82,7 @@ class Audit extends Prefab {
 
 	/**
 	*	Return TRUE if IP address is within reserved range
-	*	@return bool
+	*	@return boolhttps://fatfreeframework.com/3.6/base
 	*	@param $addr string
 	**/
 	function isreserved($addr) {

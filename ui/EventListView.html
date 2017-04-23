@@ -1,0 +1,21 @@
+<check if="@result">
+    <true>
+        <repeat group="{{ @result }}" value="{{ @item }}">
+            <h3>{{ @item.title  }}</h3>
+            <span>{{ @item.datefrom  }}</span> <span>{{ @item.place  }}</span> <br>
+            <div>{{ @item.popis  }}</div>
+            <check if="@item.image1==1">
+                <true><img src="/pictures/akcie/640x640_{{ @item.id }}_1.jpg"></true>
+            </check>
+            <check if="@item.image2==1">
+                <true><img src="/pictures/akcie/640x640_{{ @item.id }}_2.jpg"></true>
+            </check>
+            <check if="@item.image3==1">
+                <true><img src="/pictures/akcie/640x640_{{ @item.id }}_3.jpg"></true>
+            </check>
+        </repeat>
+    </true>
+    <false>
+        <p>Žiadne plánované udalosti</p>
+    </false>
+</check>

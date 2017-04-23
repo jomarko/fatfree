@@ -2,13 +2,39 @@
 <html lang="en">
 	<head>
 		<meta charset="<?php echo $ENCODING; ?>" />
-		<title>Powered by <?php echo $PACKAGE; ?></title>
+		<title>Folklórny Súbor Brezová</title>
 		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
-		<link rel="stylesheet" href="lib/code.css" type="text/css" />
-		<link rel="stylesheet" href="ui/css/base.css" type="text/css" />
-		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="{{@BASE}}/lib/code.css" type="text/css" />
+		<link rel="stylesheet" href="{{@BASE}}/ui/css/base.css" type="text/css" />
+		<link rel="stylesheet" href="{{@BASE}}/ui/css/theme.css" type="text/css" />
 	</head>
 	<body>
-		<?php echo $this->render(Base::instance()->get('content')); ?>
+        <div class="header center">
+            <p><img src="{{@BASE}}/ui/images/fsbrezova.png"></p>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="menu">
+                    <ul>
+                        <repeat group="{{ @sections }}" value="{{ @section }}">
+                            <strong><li>{{ @section.title  }}</li></strong>
+                            <repeat group="{{ @articles }}" value="{{ @article }}">
+                                <check if="{{ @article.id_category==@section.id }}">
+                                    <true>
+                                        <li><a href="{{@BASE}}/articles/{{ @article.id }}">{{ @article.title }}</a></li>
+                                    </true>
+                                </check>
+                            </repeat>
+                        </repeat>
+                        <strong><li>UDALOSTI</li></strong>
+                        <li><a href="{{@BASE}}/events">Nadchádzajúce udalosti</a></li>
+                        <li><a href="{{@BASE}}/events/past">Kronika</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <include href="{{ @content }}" />
+                </div>
+            </div>
+        </div>
 	</body>
 </html>
